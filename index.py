@@ -1,14 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from goto import with_goto
 import time
 import sys
 import getopt
 import platform
+# 防止编码问题
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
 
 SLEEP_TIME = 1
 NO_GUI = True
@@ -42,7 +48,8 @@ def get_exec_path():
 def get_user_info(argv):
     user_info = []
     try:
-        opts, args = getopt.getopt(argv, "hu:p:g", ["username=", "password=", "gui"])
+        opts, args = getopt.getopt(
+            argv, "hu:p:g", ["username=", "password=", "gui"])
     except getopt.GetoptError:
         print('Usage:\n' + sys.argv[0] + '-u <username> -p <password>')
         sys.exit(1)
